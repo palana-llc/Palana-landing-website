@@ -1,0 +1,29 @@
+.getinvolved-inline-link {
+  color: #f49e4c;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.getinvolved-inline-link:hover {
+  color: #e0893e;
+}
+
+.getinvolved-positions {
+  padding: 2.5rem 1.5rem 4rem;
+  background-color: #ffffff;
+}
+
+.getinvolved-section-title {
+  margin: 0 0 1rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .getinvolved-section-title {
+    font-size: 2rem;
+  }
+}

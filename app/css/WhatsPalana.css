@@ -1,0 +1,73 @@
+.wp-container {
+    outline: 2px solid black;
+    width: 100vw;
+    height: clamp(100px, 50vw, 700px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    z-index: 5;
+}
+
+.wp-polaroid {
+    outline: 2px solid red;
+    width: 100%;
+    height: auto;
+}
+
+.polaroid-box {
+    position: absolute;
+    top: -12%;
+    outline: 5px solid blue;
+    width: clamp(50px, 25%, 450px);
+    height: auto;
+}
+
+.polaroid-box-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.anchor {
+    position: absolute;
+    outline: 2px solid green;
+    width: 60%;
+    height: 50px;
+}
+
+.wp-text {
+    position: absolute;
+    top: 15%;
+    outline: 2px solid orange;
+    width: 30%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+}
+
+.wp-header {
+    font-size: 50px;
+    font-weight: 750;
+    line-height: 50px;
+    font-family: Raleway, sans-serif;
+}
+
+.wp-content {
+    font-size: 35px;
+    font-weight: 500;
+    line-height: 40px;
+    font-family: Raleway, sans-serif;
+}

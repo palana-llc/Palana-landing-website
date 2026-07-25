@@ -1,0 +1,10 @@
+.bg {
+    border: 2px solid black;
+    width: 100vw;
+    min-height: 3000px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}

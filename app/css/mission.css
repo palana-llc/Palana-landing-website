@@ -1,0 +1,794 @@
+.mission-hero {
+  position: relative;
+  padding: 8rem 1.5rem 3rem;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+
+.mission-hero-inner {
+  max-width: 72rem;
+  width: 100%;
+  text-align: center;
+}
+
+.mission-title-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.mission-title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .mission-title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mission-title {
+    font-size: 4rem;
+  }
+}
+
+.mission-title-highlight {
+  position: absolute;
+  left: -0.75rem;
+  right: -0.75rem;
+  bottom: -0.05rem;
+  height: 5rem;
+  border-radius: 0.35rem;
+  background-color: #f49e4c;
+}
+
+.mission-title-wrapper .tape-header.mission-hero-title-tape {
+  font-size: 2.5rem;
+  padding: 0.1em 0.45em;
+  min-height: 1.12em;
+  letter-spacing: normal;
+}
+
+@media (min-width: 640px) {
+  .mission-title-wrapper .tape-header.mission-hero-title-tape {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mission-title-wrapper .tape-header.mission-hero-title-tape {
+    font-size: 4rem;
+  }
+}
+
+.mission-body {
+  max-width: 56rem;
+  margin: 0 auto 1rem;
+  padding: 0 1.5rem;
+}
+
+.mission-body-text {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: black;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* student mission stylings */
+.mission-student-banner {
+  width: 100%;
+  height: 42rem;
+  background-color: #9CF28E;
+  padding: 12rem 2rem 4.5rem 8rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.mission-student-title {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #0b1120;
+  text-align: left;
+}
+
+.mission-student-text {
+  margin-top: 0.75rem;
+  max-width: 40rem;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  font-weight: 500;
+  color: black;
+  text-align: left;
+}
+
+.mission-student-copy {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.mission-student-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: flex-start;
+  margin-right: 6rem;
+  gap: 0;
+}
+
+.mission-student-cta {
+  display: inline-flex;
+  align-items: center;
+}
+
+.mission-student-phones {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.25rem;
+  margin-right: 6rem;
+  margin-bottom: 6rem;
+  align-self: center;
+}
+
+.mission-phone-carousel {
+  width: 100%;
+  max-width: 100%;
+}
+
+.mission-phone-carousel__stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: visible;
+}
+
+.mission-phone-carousel__stage--with-arrows {
+  gap: 0.35rem;
+}
+
+.mission-phone-carousel__stage--with-arrows .mission-phone-carousel__viewport {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 18rem;
+}
+
+.mission-phone-carousel__viewport {
+  overflow: hidden;
+  width: 100%;
+  overflow-clip-margin: 1.5rem;
+}
+
+.mission-phone-carousel__track {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: transform 0.35s ease-out;
+}
+
+.mission-phone-carousel__slide {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  min-width: 0;
+}
+
+.mission-phone-carousel__slide-inner {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1.25rem 1rem 3.5rem;
+}
+
+.mission-phone-carousel__btn {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  padding: 0.25rem;
+  border: none;
+  background: none;
+  color: #0b1120;
+  cursor: pointer;
+  transition: opacity 150ms ease-out, color 150ms ease-out;
+}
+
+.mission-phone-carousel__btn:hover {
+  opacity: 0.55;
+}
+
+.mission-phone-carousel__btn:focus-visible {
+  outline: 2px solid #355691;
+  outline-offset: 2px;
+  border-radius: 0.2rem;
+}
+
+.mission-phone-carousel__btn svg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.mission-phone-carousel__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+}
+
+.mission-phone-carousel__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background-color: rgba(11, 17, 32, 0.22);
+  cursor: pointer;
+  transition: transform 150ms ease-out, background-color 150ms ease-out;
+}
+
+.mission-phone-carousel__dot--active {
+  background-color: #0b1120;
+  transform: scale(1.15);
+}
+
+.mission-phone-carousel__dot:focus-visible {
+  outline: 2px solid #355691;
+  outline-offset: 2px;
+}
+
+.mission-student-phone {
+  display: block;
+  height: 30rem;
+  width: auto;
+  filter: drop-shadow(0 20px 40px rgba(31, 41, 55, 0.45));
+}
+
+.mission-student-phone-small {
+  height: 24rem;
+}
+
+.mission-student-button {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 3.5rem;
+  padding: 0.6rem 0rem;
+  border-radius: 0.50rem;
+  color: #0b1120;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 150ms ease-out, transform 150ms ease-out;
+}
+
+.mission-student-button:hover {
+  opacity: 0.7;
+  transform: translateY(-1px);
+}
+
+/* school mission stylings */
+.mission-school-banner {
+  width: 100%;
+  height: 45rem;
+  padding: 12rem 8rem 4.5rem 2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.mission-school-content {
+  transform: translateY(-40px);
+}
+
+.mission-school-title {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #65CBEB;
+  text-align: right;
+}
+
+.mission-school-text {
+  margin-top: 0.75rem;
+  max-width: 40rem;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  font-weight: 500;
+  color: black;
+  text-align: right;
+}
+
+.mission-school-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.mission-school-buttons .mission-school-button {
+  float: none;
+}
+
+.mission-school-button--lead {
+  margin-top: 3rem;
+}
+
+.mission-school-button {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1.25rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 0.50rem;
+  background-color: #65CBEB;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-decoration: none;
+  float: right;
+  transition: background-color 150ms ease-out, transform 150ms ease-out;
+}
+
+.mission-school-button:hover {
+  background-color: #4aa7cc;
+  transform: translateY(-1px);
+}
+
+.mission-school-button-arrow {
+  margin-left: 0.3rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.mission-school-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0;
+}
+
+.mission-school-visual .mission-student-phones {
+  margin-bottom: 0;
+}
+
+.mission-school-image-caption {
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0b1120;
+  text-align: center;
+}
+
+/* dispatcher mission stylings */
+.mission-driver-banner {
+  width: 100%;
+  height: 40rem;
+  background-color: #FFB873;
+  padding: 12rem 2rem 4.5rem 8rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.mission-driver-title {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #0b1120;
+  text-align: left;
+}
+
+.mission-driver-content {
+  transform: translateY(-60px);
+}
+
+.mission-driver-text {
+  margin-top: 0.75rem;
+  max-width: 40rem;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  font-weight: 500;
+  color: black;
+  text-align: left;
+}
+
+.mission-driver-button {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 3rem;
+  padding: 0.6rem 0rem;
+  border-radius: 0.50rem;
+  color: #0b1120;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 150ms ease-out, transform 150ms ease-out;
+}
+
+.mission-driver-button:hover {
+  opacity: 0.7;
+  transform: translateY(-1px);
+}
+
+.mission-driver-visual {
+  align-self: center;
+  margin-right: 3rem;
+}
+
+.mission-driver-image {
+  display: block;
+  width: min(44rem, 45vw);
+  height: auto;
+}
+
+/* story section stylings */
+.story-banner {
+  width: 100%;
+  padding: 0rem 1.5rem 5rem;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.story-inner {
+  max-width: 72rem;
+  width: 100%;
+  text-align: center;
+}
+
+.story-title {
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  color: black;
+  font-size: 2rem;
+  display: inline-block;
+  margin: 0 auto 2rem auto;
+}
+
+@media (min-width: 640px) {
+  .story-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .story-title {
+    font-size: 3.5rem;
+  }
+}
+
+.story-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.story-image-wrap {
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
+}
+
+.story-image {
+  display: block;
+  width: 110%;
+  height: 110%;
+  object-fit: cover;
+}
+
+.story-text {
+  text-align: left;
+}
+
+.story-text p {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  line-height: 1.75;
+  color: black;
+  font-weight: 500;
+}
+
+.story-text p:last-of-type {
+  margin-bottom: 0.5rem;
+}
+
+.timeline-title {
+  display: block;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.story-quote {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.85rem 1.1rem;
+  border-radius: 0.85rem;
+  background-color: #D4B8F5;
+  color: #111827;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+@media (max-width: 1023px) {
+  .mission-student-banner,
+  .mission-school-banner,
+  .mission-driver-banner {
+    height: auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2.5rem;
+    padding: 5rem 1.5rem 3rem;
+  }
+
+  .mission-school-banner {
+    justify-content: flex-start;
+  }
+
+  .mission-school-content,
+  .mission-driver-content {
+    transform: none;
+  }
+
+  .mission-student-copy,
+  .mission-school-content {
+    display: contents;
+  }
+
+  .mission-student-title,
+  .mission-school-title {
+    order: 1;
+  }
+
+  .mission-student-text,
+  .mission-school-text {
+    order: 2;
+  }
+
+  .mission-student-visual,
+  .mission-school-visual {
+    order: 3;
+    align-self: center;
+    margin-right: 0;
+    margin-left: 3;
+    width: 100%;
+  }
+
+  .mission-student-cta {
+    order: 4;
+    align-self: stretch;
+    justify-content: center;
+    margin-top: 0;
+  }
+
+  .mission-school-buttons {
+    order: 4;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .mission-driver-visual {
+    align-self: center;
+    margin-right: 0;
+    margin-bottom: 0;
+    width: 100%;
+  }
+
+  .mission-phone-carousel .mission-student-phone {
+    filter: none;
+  }
+
+  .mission-phone-carousel__slide-inner {
+    padding: 0 0.25rem 0.5rem;
+  }
+
+  .mission-phone-carousel__viewport {
+    overflow-clip-margin: 0;
+  }
+
+  .mission-student-phone {
+    height: 18rem;
+  }
+
+  .mission-student-phone-small {
+    height: 14rem;
+  }
+
+  .mission-driver-image {
+    width: 100%;
+    max-width: 28rem;
+  }
+
+  .mission-student-title,
+  .mission-driver-title,
+  .mission-school-title {
+    font-size: 2.25rem;
+  }
+
+  .mission-school-title,
+  .mission-school-text {
+    text-align: left;
+  }
+
+  .mission-school-button {
+    float: none;
+  }
+
+  .mission-school-image-caption {
+    margin-right: 0;
+  }
+
+  .story-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .mission-hero {
+    padding: 6.5rem 1rem 2rem;
+  }
+
+  .mission-body {
+    padding: 0 0.25rem;
+  }
+
+  .mission-body-text {
+    margin-top: 1.25rem;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+
+  .mission-title-wrapper .tape-header.mission-hero-title-tape {
+    font-size: 1.75rem;
+  }
+
+  .mission-student-banner,
+  .mission-school-banner,
+  .mission-driver-banner {
+    padding: 4.5rem 1.25rem 2.5rem;
+    gap: 2rem;
+  }
+
+  .mission-student-title,
+  .mission-driver-title,
+  .mission-school-title {
+    font-size: 1.75rem;
+  }
+
+  .mission-student-text,
+  .mission-school-text,
+  .mission-driver-text {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .mission-student-cta,
+  .mission-driver-button {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .mission-phone-carousel {
+    max-width: 100%;
+  }
+
+  .mission-phone-carousel__stage--with-arrows .mission-phone-carousel__viewport {
+    max-width: 20rem;
+  }
+
+  .mission-phone-carousel .mission-student-phone,
+  .mission-phone-carousel .mission-student-phone-small {
+    height: 17.5rem;
+  }
+
+  .mission-school-buttons .mission-school-button {
+    justify-content: center;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .mission-school-buttons .mission-school-button--lead {
+    margin-top: 1rem;
+  }
+
+  .mission-student-cta {
+    width: 100%;
+    justify-content: center;
+    font-size: 1rem;
+  }
+
+  .mission-driver-image {
+    max-width: 100%;
+  }
+
+  .story-banner {
+    padding: 0 1rem 3rem;
+  }
+
+  .story-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .story-text p {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+
+  .story-quote {
+    display: block;
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mission-student-banner,
+  .mission-school-banner,
+  .mission-driver-banner {
+    padding-top: 7.5rem;
+  }
+
+  .mission-student-copy,
+  .mission-school-content {
+    display: block;
+  }
+
+  .mission-student-visual,
+  .mission-school-visual,
+  .mission-driver-visual {
+    align-self: flex-start;
+  }
+
+  .mission-school-banner {
+    gap: 5rem;
+  }
+
+  .mission-school-visual {
+    margin-left: 6rem;
+  }
+
+  .mission-phone-carousel {
+    width: auto;
+    max-width: none;
+  }
+
+  .mission-phone-carousel__viewport {
+    overflow: visible;
+    width: auto;
+  }
+
+  .mission-phone-carousel__track {
+    gap: 1.25rem;
+    justify-content: center;
+    width: max-content;
+    transform: none !important;
+  }
+
+  .mission-phone-carousel__slide {
+    flex: 0 0 auto;
+  }
+
+  .mission-phone-carousel__slide-inner {
+    padding: 0;
+  }
+}

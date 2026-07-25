@@ -1,0 +1,164 @@
+.app-likelihood-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  outline: 2px solid red;
+  width: 70%;
+  min-width: 400px;
+}
+
+.impact-title {
+  font-size: clamp(32px, 6vw, 64px);
+  font-family: Raleway, sans-serif;
+  font-weight: 800;
+  color: #353535;
+
+  text-align: center;
+  outline: 2px solid blue;
+  width: 70%;
+}
+
+.impact-subtitle {
+  font-size: clamp(22px, 4vw, 40px);
+  font-family: Raleway, sans-serif;
+  font-weight: 600;
+  color: #353535;
+
+  text-align: center;
+  outline: 2px solid green;
+  width: 70%;
+}
+
+.app-likelihood-chart {
+  width: 100%;
+  height: clamp(200px, 50vw, 550px);
+
+  outline: 4px solid orange;
+}
+
+.impact-page {
+  outline: 2px solid black;
+  width: 100vw;
+  height: clamp(100vh, auto, 200vh);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 100px;
+  padding: 100px 0px;
+}
+
+.impact-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 60px;
+}
+
+/* .chart-container {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.chart-title {
+  font-size: clamp(16px, 2.2vw, 22px);
+  font-family: Raleway, sans-serif;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 24px 0;
+} */
+
+.efficiency-chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+
+  outline: 2px solid red;
+  width: 70%;
+  min-width: 400px;
+  gap: 5%;
+}
+
+.efficiency-chart {
+  outline: 2px solid orange;
+  width: 100%;
+  margin-bottom: 2%;
+}
+
+.efficiency-legend {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+.efficiency-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: clamp(13px, 1.6vw, 16px);
+  color: #374151;
+}
+
+.efficiency-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.safety-stats-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  outline: 2px solid red;
+  width: 70%;
+  min-width: 400px;
+  gap: 0%;
+}
+
+
+.safety-stats-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  /* gap: 8px; */
+  width: 70%;
+  margin-top: 5%;
+
+  outline: 2px solid orange;
+}
+
+.safety-stats-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.safety-stats-percent {
+  font-size: clamp(28px, 5vw, 52px);
+  font-family: Raleway, sans-serif;
+  font-weight: 800;
+  color: #111827;
+  min-width: 90px;
+}
+
+.safety-stats-label {
+  font-size: clamp(20px, 4vw, 40px);
+  font-family: Raleway, sans-serif;
+  font-weight: 700;
+  color: #374151;
+}
+
+@media (max-width: 768px) {
+  .impact-charts {
+    grid-template-columns: 1fr;
+  }
+}

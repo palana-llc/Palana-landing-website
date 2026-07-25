@@ -1,0 +1,60 @@
+.laptop-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /* position: absolute; */
+    /* right: 55%; */
+    font-size: 70;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* outline: 2px solid orange; */
+}
+
+/* .laptop-container-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    outline: 2px solid blue;
+} */
+
+.laptop-img {
+    height: 90%;
+    width: 80%;
+    position: absolute;
+
+    outline: 2px solid pink;
+    transition: ease-in-out 0.9s;
+
+    opacity: 1;
+}
+
+.laptop-img-hidden {
+    height: auto;
+    width: 86%;
+    position: absolute;
+
+    /* outline: 2px solid red; */
+    transition: ease-in-out 0.9s;
+
+    opacity: 0;
+}
+
+.laptop-frame {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* outline: 2px solid red; */
+}
