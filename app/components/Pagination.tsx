@@ -17,7 +17,7 @@ export type PaginationProps = {
 
 type DotEntry = number | "ellipsis";
 
-function buildDotEntries(current: number, total: number): DotEntry[] {
+export function buildDotEntries(current: number, total: number): DotEntry[] {
   if (total <= 1) {
     return [1];
   }

@@ -30,6 +30,8 @@ const segments = [
 export default function EfficiencyChart() {
   return (
     <div className="efficiency-chart-container">
+      <img src="/GreenPhone.png" alt="Efficiency Chart Header" className="efficiency-phone">
+      </img>
       <h2 className="impact-title" style={{textAlign: "left"}}>
         How efficient is it to request a SafeTrip ride?
       </h2>

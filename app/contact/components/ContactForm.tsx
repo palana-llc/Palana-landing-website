@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 type FormType = "general" | "bug";
 type FormState = "idle" | "loading" | "success" | "error";
@@ -28,7 +28,27 @@ export default function ContactForm() {
     setFormType(type);
     setFormState("idle");
     setFields({ name: "", email: "", university: "", role: "", subject: "", message: "" });
+    window.history.replaceState(null, "", `${window.location.pathname}#${type}`);
   };
+
+  useEffect(() => {
+    const syncFromHash = (): void => {
+      const id = window.location.hash.replace("#", "");
+      if (id === "bug" || id === "general") {
+        setFormType(id);
+        setFormState("idle");
+        requestAnimationFrame(() => {
+          document
+            .getElementById("contact-form-section")
+            ?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+    };
+
+    syncFromHash();
+    window.addEventListener("hashchange", syncFromHash);
+    return () => window.removeEventListener("hashchange", syncFromHash);
+  }, []);
 
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -86,7 +106,7 @@ export default function ContactForm() {
         </div>
       </div>
 
-      <div className="contact-form-section">
+      <div id="contact-form-section" className="contact-form-section">
         <div className="contact-form-card">
           {formState === "success" ? (
             <div className="contact-success">

@@ -71,3 +71,62 @@
     line-height: 40px;
     font-family: Raleway, sans-serif;
 }
+
+@media (max-width: 1023px) {
+    .wp-container {
+        width: 100%;
+        max-width: 100%;
+        height: clamp(22rem, 72vw, 32rem);
+        overflow: hidden;
+    }
+
+    .wp-text {
+        top: 8%;
+        width: 84%;
+        left: 50%;
+        transform: translateX(-50%);
+        height: auto;
+    }
+
+    .wp-header {
+        font-size: clamp(1.35rem, 4.8vw, 2rem);
+        line-height: 1.15;
+        text-align: center;
+    }
+
+    .wp-content {
+        font-size: clamp(0.95rem, 3.2vw, 1.2rem);
+        line-height: 1.35;
+        text-align: center;
+    }
+
+    .polaroid-box {
+        width: clamp(6.5rem, 34vw, 11rem);
+        top: 46% !important;
+    }
+}
+
+@media (max-width: 639px) {
+    .wp-container {
+        height: clamp(20rem, 88vw, 26rem);
+        padding-inline: 0.5rem;
+    }
+
+    .wp-text {
+        top: 4%;
+        width: 92%;
+    }
+
+    .polaroid-box {
+        width: clamp(5.5rem, 38vw, 8.5rem);
+        top: 50% !important;
+    }
+
+    .polaroid-box[style*="left: 7%"] {
+        left: 4% !important;
+    }
+
+    .polaroid-box[style*="right: 7%"] {
+        right: 4% !important;
+    }
+}

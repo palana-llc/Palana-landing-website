@@ -16,7 +16,14 @@ type NewsArticle = {
   contents: string;
   imageUrl?: string;
   category?: NewsCategory | null;
+  linkUrl?: string | null;
+  linkLabel?: string | null;
 };
+
+const DEFAULT_LINK_LABEL = "Learn more";
+
+const isExternalHref = (href: string): boolean =>
+  /^https?:\/\//i.test(href);
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -57,7 +64,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const article = await sanityFetch<NewsArticle | null>(
-    '*[_type == "news" && slug == $slug][0]{ title, description, date, contents, category, "imageUrl": image.asset->url }',
+    '*[_type == "news" && slug == $slug][0]{ title, description, date, contents, category, linkUrl, linkLabel, "imageUrl": image.asset->url }',
     { slug },
   );
 
@@ -75,13 +82,17 @@ export default async function NewsArticlePage({ params }: PageProps) {
   const { slug } = await params;
 
   const article = await sanityFetch<NewsArticle | null>(
-    '*[_type == "news" && slug == $slug][0]{ title, description, date, contents, category, "imageUrl": image.asset->url }',
+    '*[_type == "news" && slug == $slug][0]{ title, description, date, contents, category, linkUrl, linkLabel, "imageUrl": image.asset->url }',
     { slug },
   );
 
   if (!article) {
     notFound();
   }
+
+  const relatedLink = article.linkUrl?.trim();
+  const relatedLinkLabel =
+    article.linkLabel?.trim() || DEFAULT_LINK_LABEL;
 
   return (
     <>
@@ -128,6 +139,30 @@ export default async function NewsArticlePage({ params }: PageProps) {
             </div>
           )}
           <div className="news-article-content">{article.contents}</div>
+          {relatedLink && (
+            <footer className="news-article-footer">
+              {isExternalHref(relatedLink) ? (
+                <a
+                  href={relatedLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="news-article-link"
+                >
+                  {relatedLinkLabel}
+                  <span aria-hidden className="news-card-button-arrow">
+                    →
+                  </span>
+                </a>
+              ) : (
+                <Link href={relatedLink} className="news-article-link">
+                  {relatedLinkLabel}
+                  <span aria-hidden className="news-card-button-arrow">
+                    →
+                  </span>
+                </Link>
+              )}
+            </footer>
+          )}
         </article>
       </main>
       <Footer />

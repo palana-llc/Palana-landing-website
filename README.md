@@ -4,4 +4,3 @@
 cd palana
 npm run dev
 ```
-test

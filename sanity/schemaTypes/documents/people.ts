@@ -25,8 +25,16 @@ const people = defineType({
     },
     {
       name: 'team',
-      title: 'Team (Founder, Mobile Dev, UI/UX, Web Dev)',
+      title: 'Team',
       type: 'string',
+      options: {
+        list: [
+          { title: 'Mobile Dev', value: 'Mobile Dev' },
+          { title: 'UI/UX', value: 'UI/UX' },
+          { title: 'Web Dev', value: 'Web Dev' },
+          { title: 'Marketing', value: 'Marketing' },
+        ],
+      },
       validation: rule => rule.required(),
     },
     {

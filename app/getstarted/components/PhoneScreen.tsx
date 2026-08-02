@@ -6,19 +6,33 @@ import screenGif from './screen-gif.gif';
 
 type Props = {
   src: string | null;
+  videoSrc?: string | null;
 };
 
-export default function PhoneScreen({ src }: Props) {
+export default function PhoneScreen({ src, videoSrc }: Props) {
   return (
     <div className="phone-container">
-      <Image
-        src={src ?? screenGif}
-        alt="Phone screen"
-        className="phone-img"
-        width={301}
-        height={600}
-        unoptimized={src !== null}
-      />
+      {videoSrc ? (
+        <video
+          src={videoSrc}
+          className="phone-img"
+          width={301}
+          height={600}
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+      ) : (
+        <Image
+          src={src ?? screenGif}
+          alt="Phone screen"
+          className="phone-img"
+          width={301}
+          height={600}
+          unoptimized={src !== null}
+        />
+      )}
       <Image
         src={PhoneFrame}
         alt="Phone Frame"

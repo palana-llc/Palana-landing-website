@@ -21,6 +21,7 @@ const Features = forwardRef<HTMLDivElement, Props>(function Features({ features 
 
   const clickedFeature = features.find(f => f._id === idClicked) ?? null;
   const currentImageUrl = clickedFeature?.laptopScreenImageUrl ?? null;
+  const currentVideoUrl = clickedFeature?.laptopScreenVideoUrl ?? null;
 
   return (
     <div ref={ref} className="features-container">
@@ -54,7 +55,7 @@ const Features = forwardRef<HTMLDivElement, Props>(function Features({ features 
         width: 901,
         height: 470,
       }}>
-        <LaptopScreen src={currentImageUrl} />
+        <LaptopScreen src={currentImageUrl} videoSrc={currentVideoUrl} />
       </div>
 
       <div className="features-group-container">

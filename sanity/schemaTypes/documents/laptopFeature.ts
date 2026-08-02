@@ -29,6 +29,12 @@ const laptopFeature = defineType({
       title: 'Laptop Screen Image',
       type: 'image',
     }),
+    defineField({
+      name: 'laptopScreenVideo',
+      title: 'Laptop Screen Video (MP4)',
+      type: 'file',
+      options: { accept: 'video/mp4' },
+    }),
   ],
 });
 

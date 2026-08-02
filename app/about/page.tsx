@@ -10,15 +10,6 @@ import { client } from "@/sanity/lib/client";
 import "../css/mission.css";
 
 export default async function About() {
-  const timelineQuery = `*[_type == "timeline"] | order(year asc) {
-    _id,
-    year,
-    quote,
-    description,
-    link,
-    "imageUrl": image.asset->url
-  }`;
-
   return (
     <>
       <Navbar />

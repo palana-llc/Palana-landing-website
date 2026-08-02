@@ -4,6 +4,7 @@ export type TutorialStep = {
   body: string;
   order: number;
   phoneScreenImageUrl: string | null;
+  phoneScreenVideoUrl: string | null;
 };
 
 export type Feature = {
@@ -12,6 +13,7 @@ export type Feature = {
   iconName: string;
   order: number;
   phoneScreenImageUrl: string | null;
+  phoneScreenVideoUrl: string | null;
 };
 
 export type LaptopFeature = {
@@ -20,4 +22,5 @@ export type LaptopFeature = {
   iconName: string;
   order: number;
   laptopScreenImageUrl: string | null;
+  laptopScreenVideoUrl: string | null;
 };

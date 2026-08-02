@@ -21,7 +21,7 @@ const news = defineType({
       name: 'image',
       title: 'Image',
       type: 'image',
-      validation: rule => rule.required(),
+      description: 'Optional. Leave empty for text-only posts.',
     },
     {
       name: 'slug',
@@ -54,6 +54,19 @@ const news = defineType({
       title: 'News Content',
       type: 'text',
       validation: rule => rule.required(),
+    },
+    {
+      name: 'linkUrl',
+      title: 'Related link URL',
+      type: 'url',
+      description:
+        'Optional. Shown at the bottom of the full article (e.g. partner site, press release, or another page).',
+    },
+    {
+      name: 'linkLabel',
+      title: 'Related link label',
+      type: 'string',
+      description: 'Button text for the related link. Defaults to "Learn more" if empty.',
     },
   ],
 });

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { Menu, X, ChevronDown, ArrowRight, CornerDownRight } from 'lucide-react';
 import { TapeHeader } from '@/app/components/TapeHeader';
 
@@ -17,8 +18,6 @@ type DropdownId = 'impact' | 'about' | 'contact' | 'getstarted';
 
 const impactLinks: DropdownLink[] = [
   { title: 'Key Statistics', href: '/impact', bold: true },
-  { title: 'Student Spotlight', href: '/impact#impact-stories', bold: true, boxed: 'student' },
-  { title: 'University Spotlight', href: '/impact#impact-stats', bold: true, boxed: 'university' },
 ];
 
 const IMPACT_NAV_SAFETY_QUESTION: string =
@@ -90,19 +89,14 @@ const contactLinks: DropdownLink[] = [
   { title: 'Open Positions', href: '/contact/getinvolved#positions', indent: true },
 ];
 
-const getStartedLinks: DropdownLink[] = [
-  { title: 'For Students', href: '/getstarted', bold: true },
-  { title: 'For Drivers', href: '/getstarted', bold: true },
-  { title: 'For Dispatchers', href: '/getstarted', bold: true },
-  { title: SOFTWARE_FAQ_HEADING, href: '/getstarted', bold: true },
-];
+const contactMobileLinks: DropdownLink[] = contactLinks.filter((link) => !link.indent);
 
 type ProductColumnHeadingStyle = 'student' | 'university' | 'dispatcher';
 
 const PRODUCT_COLUMN_TAPE: Record<ProductColumnHeadingStyle, { tapeColor: string; textColor: string }> = {
-  student: { tapeColor: '#90BE88', textColor: '#ffffff' },
-  university: { tapeColor: '#208AAE', textColor: '#ffffff' },
-  dispatcher: { tapeColor: '#f49e4c', textColor: '#ffffff' },
+  student: { tapeColor: '#AFE6A6', textColor: '#3C578D' },
+  university: { tapeColor: '#94D2E6', textColor: '#3C578D' },
+  dispatcher: { tapeColor: '#F49E4C', textColor: '#3C578D' },
 };
 
 type GetStartedColumn = {
@@ -152,12 +146,18 @@ const getStartedColumns: GetStartedColumn[] = [
   },
 ];
 
+const softwareMobileLinks: DropdownLink[] = getStartedColumns.map((col) => ({
+  title: col.heading,
+  href: '/getstarted',
+  bold: true,
+}));
+
 type BoxedKind = 'student' | 'university' | 'purple';
 
 const BOXED_TAPE: Record<BoxedKind, { tapeColor: string; textColor: string }> = {
   student: { tapeColor: '#90BE88', textColor: '#ffffff' },
   university: { tapeColor: '#208AAE', textColor: '#ffffff' },
-  purple: { tapeColor: '#d4b8f5', textColor: '#ffffff' },
+  purple: { tapeColor: '#F49E4C', textColor: '#3C578D' },
 };
 
 const DesktopDropdownLink = (props: { link: DropdownLink; index: number }): React.ReactElement => {
@@ -237,14 +237,25 @@ const renderGetStartedGridColumn = (col: GetStartedColumn): React.ReactElement =
     </>
   );
 
-  if (col.heading === SOFTWARE_FAQ_HEADING) {
+  if (col.heading === 'For Students') {
     return (
-      <div key={col.heading} className="nav-dropdown-getstarted-faq-column">
-        <div className="nav-dropdown-column nav-dropdown-column--faq">{inner}</div>
+      <div
+        key={col.heading}
+        className="nav-dropdown-column nav-dropdown-getstarted-cta-column"
+      >
+        {inner}
         <a href="/getstarted" className="nav-dropdown-faq-products-cta">
           Check out Palana&apos;s Software
           <ArrowRight className="nav-dropdown-cta-arrow" aria-hidden />
         </a>
+      </div>
+    );
+  }
+
+  if (col.heading === SOFTWARE_FAQ_HEADING) {
+    return (
+      <div key={col.heading} className="nav-dropdown-column nav-dropdown-column--faq">
+        {inner}
       </div>
     );
   }
@@ -256,11 +267,55 @@ const renderGetStartedGridColumn = (col: GetStartedColumn): React.ReactElement =
   );
 };
 
-const MobileNavLink = (props: { link: DropdownLink }): React.ReactElement => (
-  <a href={props.link.href} className="nav-mobile-link">
+const MobileNavLink = (props: {
+  link: DropdownLink;
+  onNavigate?: () => void;
+}): React.ReactElement => (
+  <a
+    href={props.link.href}
+    className={[
+      'nav-mobile-link',
+      props.link.bold && 'nav-mobile-link--bold',
+      props.link.indent && 'nav-mobile-link--indent',
+    ]
+      .filter(Boolean)
+      .join(' ')}
+    onClick={props.onNavigate}
+  >
     {props.link.title}
   </a>
 );
+
+type MobileNavSectionProps = {
+  title: string;
+  links: DropdownLink[];
+  onNavigate?: () => void;
+};
+
+const MobileNavSection = (props: MobileNavSectionProps): React.ReactElement => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className={`nav-mobile-section ${isOpen ? 'nav-mobile-section--open' : ''}`}>
+      <button
+        type="button"
+        className="nav-mobile-section-toggle"
+        onClick={() => setIsOpen((open) => !open)}
+        aria-expanded={isOpen}
+      >
+        <span>{props.title}</span>
+        <ChevronDown className={`nav-mobile-chevron ${isOpen ? 'open' : ''}`} aria-hidden />
+      </button>
+      {isOpen && (
+        <div className="nav-mobile-section-panel">
+          {props.links.map((link) => (
+            <MobileNavLink key={`${link.href}-${link.title}`} link={link} onNavigate={props.onNavigate} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 export const Navbar = (): React.ReactElement => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -399,8 +454,8 @@ export const Navbar = (): React.ReactElement => {
                       size="medium"
                       angle="left"
                       edge="subtle"
-                      tapeColor="#fed7aa"
-                      textColor="#9a3412"
+                      tapeColor="#F49E4C"
+                      textColor="#3C578D"
                       className="nav-speech-bubbles-title-tape"
                     >
                       Why We Love Palana
@@ -421,10 +476,6 @@ export const Navbar = (): React.ReactElement => {
                       </div>
                     </div>
                   </div>
-                  <a href="/about" className="nav-dropdown-cta-button">
-                    Learn more about our team
-                    <ArrowRight className="nav-dropdown-cta-arrow" />
-                  </a>
                 </div>
               </div>
             )}
@@ -434,7 +485,50 @@ export const Navbar = (): React.ReactElement => {
                   {contactLinks.map((link, index) => <DesktopDropdownLink key={link.href} link={link} index={index} />)}
                 </div>
                 <div className="nav-dropdown-panel nav-dropdown-panel-contact">
-                  <div className="nav-dropdown-panel-placeholder" />
+                  <div className="nav-dropdown-contact-selectors">
+                    <div className="nav-dropdown-contact-card nav-dropdown-contact-card--general">
+                      <div className="nav-dropdown-contact-card-top">
+                        <img
+                          src="/General-Inquiries-Cutout.png"
+                          alt=""
+                          className="nav-dropdown-contact-card-cutout"
+                        />
+                        <h3 className="nav-dropdown-contact-card-title">
+                          General
+                          <br />
+                          Inquiries
+                        </h3>
+                      </div>
+                      <Link
+                        href="/contact#general"
+                        className="nav-dropdown-contact-card-btn"
+                        onClick={() => setActiveDropdown(null)}
+                      >
+                        Submit a Form
+                      </Link>
+                    </div>
+                    <div className="nav-dropdown-contact-card nav-dropdown-contact-card--bug">
+                      <div className="nav-dropdown-contact-card-top">
+                        <img
+                          src="/Report-Bug-Cutout.png"
+                          alt=""
+                          className="nav-dropdown-contact-card-cutout"
+                        />
+                        <h3 className="nav-dropdown-contact-card-title">
+                          Report a
+                          <br />
+                          Bug
+                        </h3>
+                      </div>
+                      <Link
+                        href="/contact#bug"
+                        className="nav-dropdown-contact-card-btn"
+                        onClick={() => setActiveDropdown(null)}
+                      >
+                        Submit a Form
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
@@ -450,30 +544,26 @@ export const Navbar = (): React.ReactElement => {
       {isMenuOpen && (
         <div className="nav-mobile-menu">
           <div className="nav-mobile-menu-inner">
-            <div className="nav-mobile-section">
-              <div className="nav-mobile-section-title">Impact</div>
-              <div className="nav-mobile-section-links">
-                {impactLinks.map(link => <MobileNavLink key={link.href} link={link} />)}
-              </div>
-            </div>
-            <div className="nav-mobile-section">
-              <div className="nav-mobile-section-title">About Us</div>
-              <div className="nav-mobile-section-links">
-                {aboutLinks.map(link => <MobileNavLink key={link.href} link={link} />)}
-              </div>
-            </div>
-            <div className="nav-mobile-section">
-              <div className="nav-mobile-section-title">Contact Us</div>
-              <div className="nav-mobile-section-links">
-                {contactLinks.map(link => <MobileNavLink key={link.href} link={link} />)}
-              </div>
-            </div>
-            <div className="nav-mobile-section">
-              <div className="nav-mobile-section-title">Software</div>
-              <div className="nav-mobile-section-links">
-                {getStartedLinks.map(link => <MobileNavLink key={link.href} link={link} />)}
-              </div>
-            </div>
+            <MobileNavSection
+              title="Impact"
+              links={impactLinks}
+              onNavigate={() => setIsMenuOpen(false)}
+            />
+            <MobileNavSection
+              title="About Us"
+              links={aboutLinks}
+              onNavigate={() => setIsMenuOpen(false)}
+            />
+            <MobileNavSection
+              title="Contact Us"
+              links={contactMobileLinks}
+              onNavigate={() => setIsMenuOpen(false)}
+            />
+            <MobileNavSection
+              title="Software"
+              links={softwareMobileLinks}
+              onNavigate={() => setIsMenuOpen(false)}
+            />
           </div>
         </div>
       )}

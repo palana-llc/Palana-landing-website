@@ -37,12 +37,11 @@ export const Growth = (): React.ReactElement => {
         />
       </svg>
 
-      <motion.div className="growth-rect" 
-        style={{ 
+      <motion.div
+        className="growth-rect growth-rect--safety"
+        style={{
           opacity: rectOpacity,
           y: rectY,
-          top: "55%",
-          right: "38%",
         }}>
         <CountUp target={90} motionValue={rectOpacity} unit="%"/>
         <p style={{marginTop: 30, marginBottom: -20, fontSize: 25, color: '#1C2C50' }}>
@@ -50,12 +49,11 @@ export const Growth = (): React.ReactElement => {
         </p>
       </motion.div>
 
-      <motion.div className="growth-rect" 
-        style={{ 
+      <motion.div
+        className="growth-rect growth-rect--campuses"
+        style={{
           opacity: rectOpacity,
           y: rectY,
-          top: "34%",
-          left: "22%",
         }}>
         <CountUp target={20} motionValue={rectOpacity} unit="+"/>
         <p style={{marginTop: 30, marginBottom: -20, fontSize: 25, color: '#1C2C50' }}>
@@ -63,12 +61,11 @@ export const Growth = (): React.ReactElement => {
         </p>
       </motion.div>
 
-      <motion.div className="growth-rect" 
-        style={{ 
+      <motion.div
+        className="growth-rect growth-rect--downloads"
+        style={{
           opacity: rectOpacity,
           y: rectY,
-          top: "28%",
-          right: "30%",
         }}>
         <CountUp target={50000} motionValue={rectOpacity} unit="+"/>
         <p style={{marginTop: 30, marginBottom: -20, fontSize: 25, color: '#1C2C50' }}>
@@ -76,10 +73,10 @@ export const Growth = (): React.ReactElement => {
         </p>
       </motion.div>
 
-      <div className="growth-path-text">
+      <div className="growth-path-text growth-path-text--launched">
         Launched 2025
       </div>
-      <div className="growth-path-text" style={{ left: '10%', top: '75%' }}>
+      <div className="growth-path-text growth-path-text--today">
         Today
       </div>
 

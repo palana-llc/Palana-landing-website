@@ -2,7 +2,7 @@
 
 import '../css/WhatsPalana.css';
 // import Image from "next/image";
-import { useRef, useState, useEffect, use } from "react";
+import { useRef, useState, useEffect } from "react";
 import dynamic from 'next/dynamic';
 
 const Xarrow = dynamic(() => import('react-xarrows'), { ssr: false });
@@ -13,9 +13,11 @@ export default function WhatsPalana() {
     const startRef = useRef(null);
     const startAnchorRef = useRef(null);
 
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [windowWidth, setWindowWidth] = useState(() =>
+        typeof window !== 'undefined' ? window.innerWidth : 0
+    );
 
-    useEffect(() => { 
+    useEffect(() => {
         function handleResize() {
             setWindowWidth(window.innerWidth);
         }
@@ -24,8 +26,11 @@ export default function WhatsPalana() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const dynamicStroke = Math.min(Math.max(0, windowWidth * 0.02), 17);
-    return (
+  const widthForStroke = windowWidth || 1200;
+  const dynamicStroke = Math.min(Math.max(0, widthForStroke * 0.02), 17);
+  const showArrows = windowWidth === 0 || windowWidth > 767;
+
+  return (
         <div className="wp-container">
             <div className="polaroid-box" ref={startRef} style={{left: "-5%", height: 300, width: 20, top: "30%"}}>
             </div>
@@ -71,29 +76,33 @@ export default function WhatsPalana() {
             </div>
 
 
-            <Xarrow 
-            start={startRef}
-            end={startAnchorRef}
-            startAnchor="left"
-            endAnchor="bottom"
-            path="smooth"
-            curveness={0.7}
-            strokeWidth={dynamicStroke}
-            color="#355691"
-            headSize={0}
-            />
+            {showArrows ? (
+              <>
+                <Xarrow
+                  start={startRef}
+                  end={startAnchorRef}
+                  startAnchor="left"
+                  endAnchor="bottom"
+                  path="smooth"
+                  curveness={0.7}
+                  strokeWidth={dynamicStroke}
+                  color="#355691"
+                  headSize={0}
+                />
 
-            <Xarrow 
-            start={campusRef}
-            end={homeRef}
-            startAnchor="bottom"
-            endAnchor="left"
-            path="smooth"
-            curveness={0.7}
-            strokeWidth={dynamicStroke}
-            color="#355691"
-            headSize={4}
-            />
+                <Xarrow
+                  start={campusRef}
+                  end={homeRef}
+                  startAnchor="bottom"
+                  endAnchor="left"
+                  path="smooth"
+                  curveness={0.7}
+                  strokeWidth={dynamicStroke}
+                  color="#355691"
+                  headSize={4}
+                />
+              </>
+            ) : null}
         </div>
     );
 }

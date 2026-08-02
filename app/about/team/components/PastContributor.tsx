@@ -17,21 +17,26 @@ function colorForRole(role: string): string {
   return "#6b7280";
 }
 
+function formatPastContributorRole(role: string): string {
+  return role.replace(/mobile application developer/gi, "Mobile Developer");
+}
+
 interface PastContributorProps {
   contributor: { name: string; role?: string };
 }
 
 export default function PastContributor({ contributor }: PastContributorProps) {
-  const accentColor = colorForRole(contributor.role ?? "");
+  const role = contributor.role ? formatPastContributorRole(contributor.role) : undefined;
+  const accentColor = colorForRole(role ?? "");
 
   return (
     <div className="past-contributor">
       <p className="contributor-name" style={{ color: accentColor }}>
         {contributor.name}
       </p>
-      {contributor.role && (
+      {role && (
         <p className="contributor-role">
-          {contributor.role}
+          {role}
         </p>
       )}
     </div>

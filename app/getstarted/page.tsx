@@ -12,7 +12,8 @@ const studentStepsQuery = `
     title,
     body,
     order,
-    "phoneScreenImageUrl": phoneScreenImage.asset->url
+    "phoneScreenImageUrl": phoneScreenImage.asset->url,
+    "phoneScreenVideoUrl": phoneScreenVideo.asset->url
   }
 `;
 
@@ -22,7 +23,8 @@ const schoolStepsQuery = `
     title,
     body,
     order,
-    "phoneScreenImageUrl": phoneScreenImage.asset->url
+    "phoneScreenImageUrl": phoneScreenImage.asset->url,
+    "phoneScreenVideoUrl": phoneScreenVideo.asset->url
   }
 `;
 
@@ -32,7 +34,8 @@ const featuresQuery = `
     label,
     iconName,
     order,
-    "laptopScreenImageUrl": laptopScreenImage.asset->url
+    "laptopScreenImageUrl": laptopScreenImage.asset->url,
+    "laptopScreenVideoUrl": laptopScreenVideo.asset->url
   }
 `;
 

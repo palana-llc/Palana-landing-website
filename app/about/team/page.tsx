@@ -14,11 +14,12 @@ interface Person {
 }
 
 export default async function Team() {
-  const [founders, mobileDevsRaw, uiux, webDevs, pastContributors] = await Promise.all([
+  const [founders, mobileDevsRaw, uiux, webDevs, marketing, pastContributors] = await Promise.all([
     getFounders(),
     getTeam("Mobile Dev"),
     getTeam("UI/UX"),
     getTeam("Web Dev"),
+    getTeam("Marketing"),
     getPastContributors(),
   ]);
 
@@ -34,7 +35,8 @@ export default async function Team() {
     if (r.includes("mobile")) return 1;
     if (r.includes("ui") || r.includes("ux")) return 2;
     if (r.includes("web")) return 3;
-    return 4;
+    if (r.includes("marketing")) return 4;
+    return 5;
   };
   const SEASON_ORDER: Record<string, number> = { WI: 1, SP: 2, SU: 3, AU: 4 };
   const cohortSortKey = (cohort: string): string => {
@@ -54,6 +56,15 @@ export default async function Team() {
     return a.name.localeCompare(b.name);
   });
 
+  const showRolesForTeam = (people: Person[]) =>
+    new Set(people.map((person) => person.role?.trim()).filter(Boolean)).size > 1;
+
+  const showFounderRoles = showRolesForTeam(founders);
+  const showMobileRoles = showRolesForTeam(mobileDevs);
+  const showUiuxRoles = showRolesForTeam(uiux);
+  const showWebRoles = showRolesForTeam(webDevs);
+  const showMarketingRoles = showRolesForTeam(marketing);
+
   return (
     <>
       <Navbar />
@@ -68,74 +79,92 @@ export default async function Team() {
           Meet the team that is making Palana&apos;s mission a reality 
         </p>
 
-        {/* founders section */}
-        <div className="team-section">
-          <h2 className="section-heading section-heading-founders">Founders</h2>
-          <section className="team-grid">
-            {founders.map((person) => (
-              <div key={person.name} className="team-grid-item">
-                <PeopleCard person={person} />
-              </div>
-            ))}
-          </section>
-        </div>
+        {founders.length > 0 && (
+          <div className="team-section">
+            <h2 className="section-heading section-heading-founders">Founders</h2>
+            <section className="team-grid">
+              {founders.map((person) => (
+                <div key={person.name} className="team-grid-item">
+                  <PeopleCard person={person} showRole={showFounderRoles} />
+                </div>
+              ))}
+            </section>
+          </div>
+        )}
 
-        {/* mobile dev section */}
-        <div className="team-section">
-          <h2 className="section-heading section-heading-mobile">Mobile Application Developers</h2>
-          <section className="team-grid">
-            {mobileDevs.map((person) => (
-              <div key={person.name} className="team-grid-item">
-                <PeopleCard
-                  person={person}
-                  showRole={person.role !== "Mobile Application Engineer"}
-                  accentColor="#90BE88"
-                />
-              </div>
-            ))}
-          </section>
-        </div>
+        {mobileDevs.length > 0 && (
+          <div className="team-section">
+            <h2 className="section-heading section-heading-mobile">Mobile Application Developers</h2>
+            <section className="team-grid">
+              {mobileDevs.map((person) => (
+                <div key={person.name} className="team-grid-item">
+                  <PeopleCard
+                    person={person}
+                    showRole={showMobileRoles}
+                    accentColor="#90BE88"
+                  />
+                </div>
+              ))}
+            </section>
+          </div>
+        )}
 
-        {/* ui/ux section */}
-        <div className="team-section">
-          <h2 className="section-heading section-heading-uiux">UI/UX Designers & Researchers</h2>
-          <section className="team-grid">
-            {uiux.map((person) => (
-              <div key={person.name} className="team-grid-item">
-                <PeopleCard person={person} accentColor="#7A54BF" />
-              </div>
-            ))}
-          </section>
-        </div>
+        {uiux.length > 0 && (
+          <div className="team-section">
+            <h2 className="section-heading section-heading-uiux">UI/UX Designers & Researchers</h2>
+            <section className="team-grid">
+              {uiux.map((person) => (
+                <div key={person.name} className="team-grid-item">
+                  <PeopleCard person={person} showRole={showUiuxRoles} accentColor="#7A54BF" />
+                </div>
+              ))}
+            </section>
+          </div>
+        )}
 
-        {/* web dev section */}
-        <div className="team-section">
-          <h2 className="section-heading section-heading-web">Website Developers</h2>
-          <section className="team-grid">
-            {webDevs.map((person) => (
-              <div key={person.name} className="team-grid-item">
-                <PeopleCard person={person} showRole={false} accentColor="#208AAE" />
-              </div>
-            ))}
-          </section>
-        </div>
+        {webDevs.length > 0 && (
+          <div className="team-section">
+            <h2 className="section-heading section-heading-web">Website Developers</h2>
+            <section className="team-grid">
+              {webDevs.map((person) => (
+                <div key={person.name} className="team-grid-item">
+                  <PeopleCard person={person} showRole={showWebRoles} accentColor="#208AAE" />
+                </div>
+              ))}
+            </section>
+          </div>
+        )}
 
-        {/* past contributors section */}
-        <div className="team-section">
-          <h2 className="section-heading section-heading-past">
-            <span className="title-wrap">
-              <span className="title-highlight" />
-              <span className="title-text">Past Contributors</span>
-            </span>
-          </h2>
-          <section className="past-contributors-grid">
-            {pastContributorsSorted.map((contributor) => (
-              <div key={contributor.name}>
-                <PastContributor contributor={contributor} />
-              </div>
-            ))}
-          </section>
-        </div>
+        {marketing.length > 0 && (
+          <div className="team-section">
+            <h2 className="section-heading section-heading-marketing">Marketing</h2>
+            <section className="team-grid">
+              {marketing.map((person) => (
+                <div key={person.name} className="team-grid-item">
+                  <PeopleCard person={person} showRole={showMarketingRoles} accentColor="#F49E4C" />
+                </div>
+              ))}
+            </section>
+          </div>
+        )}
+
+        {pastContributorsSorted.length > 0 && (
+          <div className="team-section">
+            <h2 className="section-heading section-heading-past">
+              <span className="title-wrap">
+                <span className="title-highlight" />
+                <span className="title-text">Past Contributors</span>
+              </span>
+            </h2>
+            <section className="past-contributors-grid">
+              {pastContributorsSorted.map((contributor) => (
+                <div key={contributor.name}>
+                  <PastContributor contributor={contributor} />
+                </div>
+              ))}
+            </section>
+          </div>
+        )}
       </main>
       <Footer />
     </>
@@ -174,13 +203,47 @@ interface PastContributor {
   cohort: string;
 }
 
-async function getPastContributors(): Promise<PastContributor[]> {
-  const query = `*[_type == "pastContributors"] | order(cohort asc, name asc) {
-    name,
-    role,
-    cohort,
-  }`;
+interface FormerPerson {
+  name: string;
+  role: string;
+  team: string;
+}
 
-  return client.fetch<PastContributor[]>(query);
+function normalizeContributorName(name: string): string {
+  return name.trim().toLowerCase();
+}
+
+async function getPastContributors(): Promise<PastContributor[]> {
+  const [manualContributors, formerMembers] = await Promise.all([
+    client.fetch<PastContributor[]>(`*[_type == "pastContributors"] | order(cohort asc, name asc) {
+      name,
+      role,
+      cohort,
+    }`),
+    client.fetch<FormerPerson[]>(`*[_type == "people" && current == false] | order(name asc) {
+      name,
+      role,
+      team,
+    }`),
+  ]);
+
+  const contributorsByName = new Map<string, PastContributor>();
+
+  for (const contributor of manualContributors) {
+    contributorsByName.set(normalizeContributorName(contributor.name), contributor);
+  }
+
+  for (const person of formerMembers) {
+    const key = normalizeContributorName(person.name);
+    if (contributorsByName.has(key)) continue;
+
+    contributorsByName.set(key, {
+      name: person.name,
+      role: person.role || person.team,
+      cohort: "",
+    });
+  }
+
+  return Array.from(contributorsByName.values());
 }
 

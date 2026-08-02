@@ -6,22 +6,34 @@ import laptopGif from './laptopGif.gif';
 
 type Props = {
   src: string | null;
+  videoSrc?: string | null;
 };
 
-export default function LaptopScreen({ src }: Props) {
+export default function LaptopScreen({ src, videoSrc }: Props) {
   return (
     <div className="laptop-container">
-      <Image
-        src={src ?? laptopGif}
-        alt="Phone screen"
-        className="laptop-img"
-        width={301}
-        height={600}
-        unoptimized={src !== null}
-      />
+      {videoSrc ? (
+        <video
+          src={videoSrc}
+          className="laptop-img"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+      ) : (
+        <Image
+          src={src ?? laptopGif}
+          alt="Laptop screen"
+          className="laptop-img"
+          width={301}
+          height={600}
+          unoptimized={src !== null}
+        />
+      )}
       <Image
         src={LaptopFrame}
-        alt="Phone Frame"
+        alt="Laptop Frame"
         className="laptop-frame"
       />
     </div>

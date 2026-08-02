@@ -353,3 +353,65 @@
   z-index: 20;
 }
 
+@media (max-width: 1023px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-inner {
+    margin-top: 5rem;
+    padding: 1.5rem 1.25rem 2rem;
+    gap: 2rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 3.25rem);
+  }
+
+  .hero-right {
+    height: auto;
+    width: 100%;
+    max-width: 20rem;
+    margin-inline: auto;
+  }
+
+  .hero-phone {
+    width: 100%;
+    max-width: 280px;
+    min-height: 28rem;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 639px) {
+  .hero-inner {
+    margin-top: 4.75rem;
+    padding-inline: 1rem;
+  }
+
+  .hero-pill {
+    font-size: 0.875rem;
+    padding-inline: 1.25rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-phone {
+    max-width: 15rem;
+    min-height: 22rem;
+  }
+
+  .hero-hat {
+    width: 5.5rem;
+    top: -4rem;
+  }
+}
+

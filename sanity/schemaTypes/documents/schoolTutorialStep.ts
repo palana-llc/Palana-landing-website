@@ -28,6 +28,12 @@ const schoolTutorialStep = defineType({
       title: 'Phone Screen Image',
       type: 'image',
     }),
+    defineField({
+      name: 'phoneScreenVideo',
+      title: 'Phone Screen Video (MP4)',
+      type: 'file',
+      options: { accept: 'video/mp4' },
+    }),
   ],
   orderings: [
     {

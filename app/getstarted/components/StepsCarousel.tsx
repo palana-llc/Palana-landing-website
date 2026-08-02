@@ -23,6 +23,7 @@ const StepsCarousel = forwardRef<HTMLDivElement, Props>(function StepsCarousel({
 
   const activeSteps = mode === 'Schools' ? schoolsSteps : studentsSteps;
   const currentImageUrl = activeSteps[currIdx]?.phoneScreenImageUrl ?? null;
+  const currentVideoUrl = activeSteps[currIdx]?.phoneScreenVideoUrl ?? null;
   const activeColor = mode === 'Schools' ? '#66BDDA' : '#92E086';
 
   return (
@@ -31,7 +32,7 @@ const StepsCarousel = forwardRef<HTMLDivElement, Props>(function StepsCarousel({
         <div className="GS-container" style={{ backgroundColor: activeColor }}>
           <div className="phone-bookmark-container">
             <div className="phone-box">
-              <PhoneScreen src={currentImageUrl} />
+              <PhoneScreen src={currentImageUrl} videoSrc={currentVideoUrl} />
             </div>
             <div className="step-shortcuts">
               {activeSteps.map((step, idx) => (
