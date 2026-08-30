@@ -5,6 +5,7 @@ import { SafetyGaps } from "./components/SafetyGaps";
 import { WhyPalana } from "./components/WhyPalana";
 import { Growth } from "./components/Growth";
 import { News, type NewsItem } from "./components/News";
+import { Dispatch } from "./components/Dispatch";
 import { Footer } from "./components/Footer";
 import { sanityFetch } from "../sanity/lib/live";
 
@@ -20,10 +21,11 @@ export default async function Home() {
     <>
       <Navbar />
       <Hero />
-      <SafetyGaps />
-      <WhatsPalana />
       <HeadlineCarousel />
+      <WhatsPalana />
       <WhyPalana />
+      <Dispatch />
+      <SafetyGaps />
       <Growth />
       <News items={latestNews} />
       <Footer />

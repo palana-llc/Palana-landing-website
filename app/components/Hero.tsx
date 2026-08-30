@@ -17,42 +17,6 @@ export const Hero = (): React.ReactElement => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  // const filtered = UNIVERSITIES.filter((u: string): boolean =>
-  //   u.toLowerCase().includes(query.toLowerCase())
-  // );
-
-  // const subscribeClickOutside = (): (() => void) => {
-  //   const handler = (e: MouseEvent): void => {
-  //     if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-  //       setIsOpen(false);
-  //     }
-  //   };
-  //   if (isOpen) {
-  //     document.addEventListener("mousedown", handler);
-  //     return (): void => document.removeEventListener("mousedown", handler);
-  //   }
-  //   return (): void => undefined;
-  // };
-  // useEffect(subscribeClickOutside, [isOpen]);
-
-  // const makeSelectUniversity = (u: string) => (e: React.MouseEvent<HTMLButtonElement>): void =>
-  //   (e.preventDefault(), setQuery(u), setIsOpen(false), undefined) as void;
-
-  // const renderUniversityOption = (u: string): React.ReactElement => (
-  //   <li key={u} role="option">
-  //     <button
-  //       type="button"
-  //       onMouseDown={makeSelectUniversity(u)}
-  //       className="w-full text-left px-4 py-3 text-base text-gray-900 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
-  //     >
-  //       {u}
-  //     </button>
-  //   </li>
-  // );
-
-  // const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>): void =>
-  //   (setQuery(e.target.value), setIsOpen(true), undefined) as void;
-
   return (
     <section className="hero">
       <div className="nav-container">
@@ -63,29 +27,31 @@ export const Hero = (): React.ReactElement => {
             </div>
 
             <h1 className="hero-title">
-              Safer for{" "}
-              <TapeHeader
-                as="span"
-                tapeColor="#9CF28E"
-                textColor="#000000"
-                size="extraLarge"
-                className="hero-title-tape"
-              >
-                students
-              </TapeHeader>
-              <br />
-              Simpler for{" "}
-              <TapeHeader
-                as="span"
-                tapeColor="#65CBEB"
-                textColor="#000000"
-                size="extraLarge"
-                angle="right"
-                className="hero-title-tape"
-              >
-                schools
-              </TapeHeader>
-            </h1>
+  Safer for{" "}
+  <TapeHeader
+    as="span"
+    tapeColor="#9CF28E"
+    textColor="#000000"
+    size="extraLarge"
+    className="hero-title-tape"
+  >
+    students
+  </TapeHeader>
+  <br />
+  <span className="hero-title-line">
+    Simpler for{" "}
+    <TapeHeader
+      as="span"
+      tapeColor="#65CBEB"
+      textColor="#000000"
+      size="extraLarge"
+      angle="right"
+      className="hero-title-tape"
+    >
+      schools
+    </TapeHeader>
+  </span>
+</h1>
 
             {/* <p className="hero-subtitle">
               Where campus{" "}

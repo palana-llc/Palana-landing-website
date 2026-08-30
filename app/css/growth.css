@@ -1,5 +1,4 @@
 .growth-section {
-  outline: 2px solid red;
   width: 100%;
   height: 1000px;
   margin-top: 50px;
@@ -25,8 +24,6 @@
 }
 
 .growth-svg {
-  outline: 2px solid blue;
-
   position: absolute;
   top: 20%;
   /* left: 0; */
@@ -76,8 +73,6 @@
 }
 
 .growth-text {
-  outline: 2px solid orange;
-
   width: 600px;
   position: absolute;
   top: 5%;
