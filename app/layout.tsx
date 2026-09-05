@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   title: "Palana",
   description: "Palana's Website",
   icons: {
-    icon: "/blue-logo-vector.svg",
+    icon: "/mode-dependent-palana.svg",
   },
 };
 
